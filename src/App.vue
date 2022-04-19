@@ -1,26 +1,13 @@
 <template>
   <v-app>
     <v-main>
-      <HelloWorld/>
+       <FMap :center="mapCenter" />
     </v-main>
   </v-app>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+<script setup lang="ts">
+import FMap from "@/components/FMap.vue";
 
-export default defineComponent({
-  name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
-  data () {
-    return {
-      //
-    }
-  },
-})
+const mapCenter = { lat: 48.864716, lng: 2.349014 };
 </script>

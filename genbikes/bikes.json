@@ -1,0 +1,552 @@
+[
+  {
+    "id": "691036668e73a1920ec9bf92",
+    "serial_number": "AAUHTL",
+    "coordinates": [
+      48.72889541305331,
+      2.5420823712909004
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 84
+  },
+  {
+    "id": "56ea4b8bc94f658cdfd4d7aa",
+    "serial_number": "JK0PQN",
+    "coordinates": [
+      48.86053437776554,
+      2.3466862207597523
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 18
+  },
+  {
+    "id": "bed6303bb809e47a6681feb2",
+    "serial_number": "XZTTQ1",
+    "coordinates": [
+      48.85185442477728,
+      2.3454884976817048
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 3
+  },
+  {
+    "id": "0bd673143047ba81a64c1ae5",
+    "serial_number": "SORB73",
+    "coordinates": [
+      48.71670486543338,
+      2.543262011357626
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 5
+  },
+  {
+    "id": "caab1e7c1d0fc3f745ad7c6e",
+    "serial_number": "QWZYCJ",
+    "coordinates": [
+      48.86667746074446,
+      2.3941989424627383
+    ],
+    "in_order": true,
+    "service_status": 2,
+    "battery_level": 84
+  },
+  {
+    "id": "98d651593e05ac2918ad0e62",
+    "serial_number": "EYQZKH",
+    "coordinates": [
+      48.82859667066147,
+      2.3620804405402285
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 89
+  },
+  {
+    "id": "215b8f21083eba009bdeca22",
+    "serial_number": "6198NV",
+    "coordinates": [
+      48.85974637136267,
+      2.3547227197840908
+    ],
+    "in_order": true,
+    "service_status": 1,
+    "battery_level": 32
+  },
+  {
+    "id": "d2c1a759dba25febbfb10931",
+    "serial_number": "9S2CMN",
+    "coordinates": [
+      48.71615440842297,
+      2.383186967691241
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 40
+  },
+  {
+    "id": "4cf18a3115e0ac78fdff5b3c",
+    "serial_number": "R0EVH6",
+    "coordinates": [
+      48.856781559713156,
+      2.3602774986078945
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 98
+  },
+  {
+    "id": "86a4b7c022412b150821eb2d",
+    "serial_number": "D3XIAK",
+    "coordinates": [
+      48.86398757679558,
+      2.34983821415635
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 4
+  },
+  {
+    "id": "035d5ad8b51cd1e979fb746f",
+    "serial_number": "79HSTJ",
+    "coordinates": [
+      48.910775868422675,
+      2.3261521053324277
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 21
+  },
+  {
+    "id": "9e012508f667112c2e1b21ed",
+    "serial_number": "7O4277",
+    "coordinates": [
+      48.99281092112417,
+      2.2530870475641778
+    ],
+    "in_order": true,
+    "service_status": 1,
+    "battery_level": 89
+  },
+  {
+    "id": "c5e1b5807766a86cea77879e",
+    "serial_number": "FC66AG",
+    "coordinates": [
+      48.96579708379529,
+      2.375972325504321
+    ],
+    "in_order": true,
+    "service_status": 1,
+    "battery_level": 84
+  },
+  {
+    "id": "0f6a363a388f61b8966e9aaa",
+    "serial_number": "4N969G",
+    "coordinates": [
+      48.82051072335638,
+      2.3175427031910454
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 16
+  },
+  {
+    "id": "7589e6b92764525d72cf7b26",
+    "serial_number": "O90G0H",
+    "coordinates": [
+      48.9355707415892,
+      2.57968242271741
+    ],
+    "in_order": true,
+    "service_status": 2,
+    "battery_level": 52
+  },
+  {
+    "id": "cbd8bb3ef49e2c7b66601884",
+    "serial_number": "S2TGL6",
+    "coordinates": [
+      48.85147230510411,
+      2.367319676726338
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 62
+  },
+  {
+    "id": "3f5d0f1d5389131ad551599b",
+    "serial_number": "5BCXNM",
+    "coordinates": [
+      48.70786064089063,
+      2.453495661282014
+    ],
+    "in_order": true,
+    "service_status": 1,
+    "battery_level": 54
+  },
+  {
+    "id": "85d8d2477783c2939724f440",
+    "serial_number": "HAB16G",
+    "coordinates": [
+      49.019356195646,
+      2.283945529832147
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 62
+  },
+  {
+    "id": "b0a8a7870b6efcef801f9fe8",
+    "serial_number": "S4ZDT1",
+    "coordinates": [
+      48.8609487498699,
+      2.3473252988808913
+    ],
+    "in_order": true,
+    "service_status": 2,
+    "battery_level": 96
+  },
+  {
+    "id": "8fc00d5079896d7bb79ab791",
+    "serial_number": "OP1W3Y",
+    "coordinates": [
+      48.828225580192075,
+      2.200734080241338
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 82
+  },
+  {
+    "id": "f9abfc479e0b75e4738d422c",
+    "serial_number": "1SQ2M4",
+    "coordinates": [
+      48.91768309603023,
+      2.132708244847917
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 31
+  },
+  {
+    "id": "ae3b84dfe4856217c5950b79",
+    "serial_number": "X630S2",
+    "coordinates": [
+      48.86160859718029,
+      2.3727445428539533
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 2
+  },
+  {
+    "id": "39b3e1c4a0638234780e7163",
+    "serial_number": "9VOOLT",
+    "coordinates": [
+      48.86435243048933,
+      2.3505318795879995
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 69
+  },
+  {
+    "id": "95cf46766d121292ebdb84e3",
+    "serial_number": "CDD43N",
+    "coordinates": [
+      48.70040710087018,
+      2.3004313474270197
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 12
+  },
+  {
+    "id": "668a6b7d8339756a9ceefe65",
+    "serial_number": "ERPVNU",
+    "coordinates": [
+      48.91664849276774,
+      2.1658812514625647
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 36
+  },
+  {
+    "id": "746206136109b2b59d95b8d1",
+    "serial_number": "6QYKLX",
+    "coordinates": [
+      48.88946902822861,
+      2.2628356010438084
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 78
+  },
+  {
+    "id": "61ea4f5584f775d00ff38b8a",
+    "serial_number": "4H6H4W",
+    "coordinates": [
+      48.69518720351264,
+      2.241949439576088
+    ],
+    "in_order": true,
+    "service_status": 2,
+    "battery_level": 46
+  },
+  {
+    "id": "4095fdce6d7d2d8c3fa2c60d",
+    "serial_number": "V4ZW53",
+    "coordinates": [
+      48.87519057199798,
+      2.3728093872275937
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 27
+  },
+  {
+    "id": "6dccfafc825b5b1a4e193ee3",
+    "serial_number": "BMGJA4",
+    "coordinates": [
+      49.004580852932904,
+      2.3976636106449107
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 96
+  },
+  {
+    "id": "5ee0f644f0aab5b21a9637e6",
+    "serial_number": "TI33V6",
+    "coordinates": [
+      48.877410315719054,
+      2.3677059885304224
+    ],
+    "in_order": true,
+    "service_status": 2,
+    "battery_level": 46
+  },
+  {
+    "id": "3681da966db542ced6daef21",
+    "serial_number": "OOM0E0",
+    "coordinates": [
+      48.87739542270701,
+      2.364490132856211
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 61
+  },
+  {
+    "id": "ca4e794bb28ffdb0b5ae2187",
+    "serial_number": "330QSP",
+    "coordinates": [
+      48.84845372686398,
+      2.3331811709549846
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 5
+  },
+  {
+    "id": "6dbcdf46d764fba6afce5d0d",
+    "serial_number": "LLJV9D",
+    "coordinates": [
+      48.68845939165189,
+      2.2183429865543154
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 50
+  },
+  {
+    "id": "00b0657278056a87bdfe2880",
+    "serial_number": "HM2G8A",
+    "coordinates": [
+      48.85998560794343,
+      2.352138239642565
+    ],
+    "in_order": true,
+    "service_status": 2,
+    "battery_level": 39
+  },
+  {
+    "id": "d797034d8c53f688dfe50283",
+    "serial_number": "Z0PWPA",
+    "coordinates": [
+      48.861906485680755,
+      2.2793565023502076
+    ],
+    "in_order": true,
+    "service_status": 1,
+    "battery_level": 5
+  },
+  {
+    "id": "cfa73d34aa6018092e6e377c",
+    "serial_number": "NTNUA7",
+    "coordinates": [
+      48.850834516105294,
+      2.3439140363115833
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 16
+  },
+  {
+    "id": "1edb72f1d4eb9a3a094fd2c6",
+    "serial_number": "ACJUPR",
+    "coordinates": [
+      48.82413042940744,
+      2.3098916454296865
+    ],
+    "in_order": true,
+    "service_status": 2,
+    "battery_level": 8
+  },
+  {
+    "id": "9b4c09286adf692231adb818",
+    "serial_number": "VDYCJI",
+    "coordinates": [
+      48.85871560094428,
+      2.3638767161881087
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 51
+  },
+  {
+    "id": "d867874f9f16d6649841d3d7",
+    "serial_number": "8X1WYE",
+    "coordinates": [
+      48.950374565211696,
+      2.1395912235435124
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 9
+  },
+  {
+    "id": "9e649ad7b4505268858ef07a",
+    "serial_number": "ATOEH9",
+    "coordinates": [
+      48.90734352049848,
+      2.1390206492720862
+    ],
+    "in_order": true,
+    "service_status": 3,
+    "battery_level": 81
+  },
+  {
+    "id": "5f78c9cf2996dfe0fb6cb277",
+    "serial_number": "W235DB",
+    "coordinates": [
+      48.861977808013606,
+      2.3556320149143875
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 9
+  },
+  {
+    "id": "3ea6fd001456345cd69fdfbd",
+    "serial_number": "5JT73G",
+    "coordinates": [
+      48.86058330880629,
+      2.3419463152505537
+    ],
+    "in_order": true,
+    "service_status": 2,
+    "battery_level": 58
+  },
+  {
+    "id": "df85f6ac3a084185a6f92f08",
+    "serial_number": "P95ZHG",
+    "coordinates": [
+      48.860786615043594,
+      2.3389278200192516
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 28
+  },
+  {
+    "id": "5f795d4b3f7795a143af2ff6",
+    "serial_number": "9ZRC5G",
+    "coordinates": [
+      48.790922547426945,
+      2.3396386034819576
+    ],
+    "in_order": true,
+    "service_status": 2,
+    "battery_level": 31
+  },
+  {
+    "id": "671c6395436c2298d3be43bb",
+    "serial_number": "8PM8QS",
+    "coordinates": [
+      48.860973947271,
+      2.3485424629411873
+    ],
+    "in_order": false,
+    "service_status": 1,
+    "battery_level": 95
+  },
+  {
+    "id": "28c891046d22785806b3218c",
+    "serial_number": "ECRB3B",
+    "coordinates": [
+      48.89564924549419,
+      2.3568404518085786
+    ],
+    "in_order": true,
+    "service_status": 2,
+    "battery_level": 79
+  },
+  {
+    "id": "1dec4a5c2adfb96fe32018ad",
+    "serial_number": "UGS3R0",
+    "coordinates": [
+      48.893725073075785,
+      2.403405265431067
+    ],
+    "in_order": true,
+    "service_status": 1,
+    "battery_level": 24
+  },
+  {
+    "id": "c6cfb72c2a0664c8ae848e9b",
+    "serial_number": "712ZAG",
+    "coordinates": [
+      48.703030201416425,
+      2.2178911374923462
+    ],
+    "in_order": true,
+    "service_status": 1,
+    "battery_level": 35
+  },
+  {
+    "id": "c7898a9109833371b6c0f7fd",
+    "serial_number": "0ZUTBP",
+    "coordinates": [
+      48.88928741277563,
+      2.3642383836801377
+    ],
+    "in_order": true,
+    "service_status": 2,
+    "battery_level": 36
+  },
+  {
+    "id": "bf51d1980e94bf4f357b04e4",
+    "serial_number": "29ACLE",
+    "coordinates": [
+      48.8579376769947,
+      2.498270247616851
+    ],
+    "in_order": true,
+    "service_status": 2,
+    "battery_level": 33
+  }
+]

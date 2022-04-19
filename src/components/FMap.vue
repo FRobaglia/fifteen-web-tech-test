@@ -1,11 +1,12 @@
 <template>
-  <div id="map" style="height: 400px"></div>
+  <div id="map" style="height: 100%"></div>
 </template>
 
 <script setup lang="ts">
 import { Map, LngLatLike } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { onMounted } from "vue";
+
 
 export interface FMapProps {
   /**

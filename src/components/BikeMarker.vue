@@ -1,7 +1,7 @@
 <template>
     <MapboxMarker :lngLat="[props.coordinates[1], props.coordinates[0]]">
       <template v-slot:icon>
-        <div :class="`bike-icon ${['free', 'booked', 'in-use'][props.service_status - 1]}`">
+        <div :class="`bike-icon ${['free', 'booked', 'in-use'][props.service_status - 1]} ${props.in_order ? ' ' : 'out-of-order'}`">
           <v-icon size="22">
             mdi-bicycle
           </v-icon>
@@ -31,31 +31,37 @@ export interface BikeProps {
 const props = defineProps<BikeProps>();
 </script>
 
-<style lang="scss">
-  .bike-icon {
-    transition: .3s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 100%;
+<style scoped lang="scss">
+@import "@/styles/_variables.scss";
 
-    &.free {
-      background: #2ecc71;
-    }
+.bike-icon {
+  transition: .3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 100%;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.4);
 
-    &.booked {
-      background: #fdcb6e;
-    }
-
-    &.in-use {
-      background: #ff7675;
-    }
-
-    &:hover {
-      transform: scale(1.2);
-      color: white;
-    }
+  &.free {
+    background: $validation;
   }
+
+  &.booked {
+    background: $warning;
+  }
+
+  &.in-use {
+    background: $danger;
+  }
+
+  &.out-of-order {
+    background: $neutral;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
 </style>

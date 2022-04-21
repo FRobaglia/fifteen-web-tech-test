@@ -26,6 +26,10 @@
                     </v-list-item>
                 </div>
         </v-list>
+
+        <button @click="$emit('editBike')" class="edit-bike-button">
+            {{ props.in_order ? "Rendre hors-service" : "Remettre en service" }}
+        </button>
     </div>
 </template>
 
@@ -129,6 +133,15 @@ function getStatusMessage() {
         &.in-use {
         color: $danger;
         }
-
     }
+
+    .edit-bike-button {
+        color: $link;
+        text-decoration: underline;
+        font-size: 12px;
+        padding: 0 0 16px 16px;
+        display: inline;
+        text-align: right;
+    }
+
 </style>

@@ -7,12 +7,6 @@
 
 <style scoped lang="scss">
 
-@keyframes rotate {
-    to {
-        transform: rotate(360deg)
-    }
-}
-
 .loader {
     transition: .3s  ease-in-out;
     position: absolute;

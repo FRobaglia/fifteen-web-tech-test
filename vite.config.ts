@@ -13,6 +13,9 @@ export default defineConfig({
       autoImport: true,
     }),
   ],
+  server: {
+    host: true
+  },
   define: { 'process.env': {} },
   resolve: {
     alias: {

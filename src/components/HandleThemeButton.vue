@@ -14,5 +14,11 @@
     right: 35px;
     z-index: 5;
     color: var(--secondary);
+    transform: rotate(0);
+    transition: .15s ease;
+
+    &:hover {
+        transform: scale(1.2);
+    }
 }
 </style>

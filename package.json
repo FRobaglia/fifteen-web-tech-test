@@ -4,7 +4,7 @@
     "serve": "vite preview",
     "build": "vite build",
     "lint": "eslint .",
-    "dev": "vite",
+    "dev": "vite --host",
     "gen": "node genbikes/index.mjs",
     "preview": "vite preview",
     "test": "vitest",

@@ -1,4 +1,4 @@
-<template>
+<template >
     <MapboxMarker :lngLat="[props.coordinates[1], props.coordinates[0]]">
       <template v-slot:icon>
         <div :class="`bike-icon ${['free', 'booked', 'in-use'][props.service_status - 1]} ${props.in_order ? ' ' : 'out-of-order'}`">
@@ -9,7 +9,7 @@
       </template>
 
       <MapboxPopup maxWidth="290px" anchor="bottom-left" :offset="[26, 0]">
-        <BikePopup :key="props.id" :id="props.id" :serial_number="props.serial_number" :coordinates="props.coordinates" :in_order="props.in_order" :service_status="props.service_status" :battery_level="props.battery_level"></BikePopup>
+        <BikePopup @editBike="$emit('editBike', props.id, props.in_order)" :key="props.id" :id="props.id" :serial_number="props.serial_number" :coordinates="props.coordinates" :in_order="props.in_order" :service_status="props.service_status" :battery_level="props.battery_level"></BikePopup>
       </MapboxPopup>
 
     </MapboxMarker>

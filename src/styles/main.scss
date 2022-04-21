@@ -1,5 +1,6 @@
 @import '_fonts.scss';
 @import '_variables.scss';
+@import '_keyframes.scss';
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -7,4 +8,8 @@
 
 body {
     color: var(--primary);
+}
+
+button {
+    outline: none;
 }

@@ -1,7 +1,7 @@
 <template>
     <button @click="$emit('toggleTheme')" class="theme-toggle">
-        <v-icon class="theme-icon" size="35">
-            mdi-theme-light-dark
+        <v-icon class="theme-icon" size="30">
+            mdi-brightness-6
         </v-icon>
     </button>
 </template>
@@ -12,8 +12,7 @@
     position: absolute;
     top: 35px;
     right: 35px;
-}
-.theme-icon {
+    z-index: 5;
     color: var(--secondary);
 }
 </style>

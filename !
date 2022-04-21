@@ -1,0 +1,196 @@
+[33mcommit 885a2cb877aa1e5fee80594e782cda942fef2721[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Félix Robaglia <felix.robaglia@gmail.com>
+Date:   Wed Apr 20 17:22:36 2022 +0200
+
+    feat: add loader & dark mode
+
+[1mdiff --git a/index.html b/index.html[m
+[1mindex 4735c99..9540c4b 100644[m
+[1m--- a/index.html[m
+[1m+++ b/index.html[m
+[36m@@ -1,5 +1,5 @@[m
+ <!DOCTYPE html>[m
+[31m-<html lang="en">[m
+[32m+[m[32m<html lang="fr">[m
+   <head>[m
+     <meta charset="UTF-8">[m
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">[m
+[1mdiff --git a/src/App.vue b/src/App.vue[m
+[1mindex f62c20e..88ad00c 100644[m
+[1m--- a/src/App.vue[m
+[1m+++ b/src/App.vue[m
+[36m@@ -1,12 +1,14 @@[m
+ <template>[m
+   <v-app>[m
+     <v-main>[m
+[32m+[m[41m      [m
+        <FMap :center="mapCenter" />[m
+     </v-main>[m
+   </v-app>[m
+ </template>[m
+ [m
+ <script setup lang="ts">[m
+[32m+[m[32mimport "./styles/main.scss";[m
+ import FMap from "@/components/FMap.vue";[m
+ [m
+ const mapCenter = { lat: 48.864716, lng: 2.349014 };[m
+[1mdiff --git a/src/assets/logo.svg b/src/assets/logo.svg[m
+[1mdeleted file mode 100644[m
+[1mindex 145b6d1..0000000[m
+[1m--- a/src/assets/logo.svg[m
+[1m+++ /dev/null[m
+[36m@@ -1 +0,0 @@[m
+[31m-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 87.5 100"><defs><style>.cls-1{fill:#1697f6;}.cls-2{fill:#7bc6ff;}.cls-3{fill:#1867c0;}.cls-4{fill:#aeddff;}</style></defs><title>Artboard 46</title><polyline class="cls-1" points="43.75 0 23.31 0 43.75 48.32"/><polygon class="cls-2" points="43.75 62.5 43.75 100 0 14.58 22.92 14.58 43.75 62.5"/><polyline class="cls-3" points="43.75 0 64.19 0 43.75 48.32"/><polygon class="cls-4" points="64.58 14.58 87.5 14.58 43.75 100 43.75 62.5 64.58 14.58"/></svg>[m
+[1mdiff --git a/src/components/BikeMarker.vue b/src/components/BikeMarker.vue[m
+[1mindex 368904e..1ddfa82 100644[m
+[1m--- a/src/components/BikeMarker.vue[m
+[1m+++ b/src/components/BikeMarker.vue[m
+[36m@@ -1,7 +1,7 @@[m
+ <template>[m
+     <MapboxMarker :lngLat="[props.coordinates[1], props.coordinates[0]]">[m
+       <template v-slot:icon>[m
+[31m-        <div :class="`bike-icon ${['free', 'booked', 'in-use'][props.service_status - 1]}`">[m
+[32m+[m[32m        <div :class="`bike-icon ${['free', 'booked', 'in-use'][props.service_status - 1]} ${props.in_order ? ' ' : 'out-of-order'}`">[m
+           <v-icon size="22">[m
+             mdi-bicycle[m
+           </v-icon>[m
+[36m@@ -31,31 +31,37 @@[m [mexport interface BikeProps {[m
+ const props = defineProps<BikeProps>();[m
+ </script>[m
+ [m
+[31m-<style lang="scss">[m
+[31m-  .bike-icon {[m
+[31m-    transition: .3s ease-in-out;[m
+[31m-    display: flex;[m
+[31m-    justify-content: center;[m
+[31m-    align-items: center;[m
+[31m-    width: 34px;[m
+[31m-    height: 34px;[m
+[31m-    border-radius: 100%;[m
+[31m-[m
+[31m-    &.free {[m
+[31m-      background: #2ecc71;[m
+[31m-    }[m
+[31m-[m
+[31m-    &.booked {[m
+[31m-      background: #fdcb6e;[m
+[31m-    }[m
+[31m-[m
+[31m-    &.in-use {[m
+[31m-      background: #ff7675;[m
+[31m-    }[m
+[31m-[m
+[31m-    &:hover {[m
+[31m-      transform: scale(1.2);[m
+[31m-      color: white;[m
+[31m-    }[m
+[32m+[m[32m<style scoped lang="scss">[m
+[32m+[m[32m@import "@/styles/_variables.scss";[m
+[32m+[m
+[32m+[m[32m.bike-icon {[m
+[32m+[m[32m  transition: .3s ease-in-out;[m
+[32m+[m[32m  display: flex;[m
+[32m+[m[32m  justify-content: center;[m
+[32m+[m[32m  align-items: center;[m
+[32m+[m[32m  width: 34px;[m
+[32m+[m[32m  height: 34px;[m
+[32m+[m[32m  border-radius: 100%;[m
+[32m+[m[32m  box-shadow: 0 3px 3px rgba(0,0,0,0.4);[m
+[32m+[m
+[32m+[m[32m  &.free {[m
+[32m+[m[32m    background: $validation;[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  &.booked {[m
+[32m+[m[32m    background: $warning;[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  &.in-use {[m
+[32m+[m[32m    background: $danger;[m
+   }[m
+[32m+[m
+[32m+[m[32m  &.out-of-order {[m
+[32m+[m[32m    background: $neutral;[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  &:hover {[m
+[32m+[m[32m    transform: scale(1.2);[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+ </style>[m
+\ No newline at end of file[m
+[1mdiff --git a/src/components/BikePopup.vue b/src/components/BikePopup.vue[m
+[1mindex 9fa2606..1a9821e 100644[m
+[1m--- a/src/components/BikePopup.vue[m
+[1m+++ b/src/components/BikePopup.vue[m
+[36m@@ -1,25 +1,34 @@[m
+ <template>[m
+     <div class="bike-popup">  [m
+[31m-        <v-list disabled>[m
+[31m-            <v-list-subheader>Numéro de série : {{ props.serial_number }}</v-list-subheader>[m
+[31m-                <v-list-item>[m
+[31m-                <v-list-item-avatar>[m
+[31m-                    <v-icon>{{ `mdi-battery-${roundToNearest10(props.battery_level)}` }} </v-icon>[m
+[31m-                </v-list-item-avatar>[m
+[31m-                <v-list-item-title>Le vélo est chargé à {{ props.battery_level }}%.</v-list-item-title>[m
+[32m+[m[32m        <v-list>[m
+[32m+[m[32m            <v-list-subheader>N<sup>o</sup> de série : {{ props.serial_number }}</v-list-subheader>[m
+[32m+[m
+[32m+[m[32m                <v-list-item v-if="!props.in_order">[m
+[32m+[m[32m                    <v-list-item-avatar>[m
+[32m+[m[32m                        <v-icon size="24" color="#dcdde1">mdi-close-octagon</v-icon>[m
+[32m+[m[32m                    </v-list-item-avatar>[m
+[32m+[m[32m                    <v-list-item-title>Le vélo est hors-service.</v-list-item-title>[m
+                 </v-list-item>[m
+                 [m
+[31m-                <v-list-item>[m
+[31m-                <v-list-item-avatar>[m
+[31m-                    <v-icon>mdi-bicycle</v-icon>[m
+[31m-                </v-list-item-avatar>[m
+[31m-                <v-list-item-title>{{ getStatusMessage() }}</v-list-item-title>[m
+[31m-                </v-list-item>[m
+[32m+[m[32m                <div v-else>[m
+[32m+[m[32m                    <v-list-item>[m
+[32m+[m[32m                        <v-list-item-avatar>[m
+[32m+[m[32m                            <v-icon size="24" :class="`popup-bike-icon ${['free', 'booked', 'in-use'][props.service_status - 1]}`">mdi-bicycle</v-icon>[m
+[32m+[m[32m                        </v-list-item-avatar>[m
+[32m+[m[32m                        <v-list-item-title>{{ getStatusMessage() }}</v-list-item-title>[m
+[32m+[m[32m                    </v-list-item>[m
+[32m+[m
+[32m+[m[32m                    <v-list-item>[m
+[32m+[m[32m                        <v-list-item-avatar>[m
+[32m+[m[32m                            <v-icon size="24" :class="getBatteryStatus(props.battery_level)">{{ `mdi-battery${roundToNearest10(props.battery_level)}` }} </v-icon>[m
+[32m+[m[32m                        </v-list-item-avatar>[m
+[32m+[m[32m                        <v-list-item-title>Le vélo est chargé à {{ props.battery_level }}%.</v-list-item-title>[m
+[32m+[m[32m                    </v-list-item>[m
+[32m+[m[32m                </div>[m
+         </v-list>[m
+     </div>[m
+ </template>[m
+ [m
+[31m-[m
+ <script setup lang="ts">[m
+ [m
+ export interface BikePopupProps {[m
+[36m@@ -33,17 +42,34 @@[m [mexport interface BikePopupProps {[m
+ [m
+ const props = defineProps<BikePopupProps>();[m
+ [m
+[32m+[m[32mfunction getBatteryStatus(x: number) {[m
+[32m+[m[32m    if (x >= 60) {[m
+[32m+[m[32m        // Bike's battery is higher or equal to 60[m
+[32m+[m[32m        return "battery-full"[m
+[32m+[m[32m    } else if(x >= 30) {[m
+[32m+[m[32m        // Bike's battery is between 30 and 60[m
+[32m+[m[32m        return "battery-medium"[m
+[32m+[m[32m    } else {[m
+[32m+[m[32m        // Bike's battery is lower than 30[m
+[32m+[m[32m        return "battery-low"[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m
+ function roundToNearest10(x: number) {[m
+[31m-  return Math.ceil(x / 10) * 10;[m
+[32m+[m[32m  const rounded: number =  Math.ceil(x / 10) * 10;[m
+[32m+[m
+[32m+[m[32m  if (

@@ -2,7 +2,7 @@
     <MapboxMarker :lngLat="[props.coordinates[1], props.coordinates[0]]">
       <template v-slot:icon>
         <div :class="`bike-icon ${['free', 'booked', 'in-use'][props.service_status - 1]} ${props.in_order ? ' ' : 'out-of-order'}`">
-          <v-icon size="22">
+          <v-icon size="20">
             mdi-bicycle
           </v-icon>
         </div>
@@ -35,12 +35,12 @@ const props = defineProps<BikeProps>();
 @import "@/styles/_variables.scss";
 
 .bike-icon {
-  transition: .3s ease-in-out;
+  transition: .15s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   border-radius: 100%;
   box-shadow: 0 3px 3px rgba(0,0,0,0.4);
 

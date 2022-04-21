@@ -12,17 +12,14 @@
 import BikeMarker from "@/components/BikeMarker.vue";
 import Loader from "@/components/Loader.vue";
 import HandleTheme from "@/components/HandleTheme.vue";
-import useTheme from '@/composables/useTheme.ts';
+import useTheme from '@/composables/useTheme.js';
 import { LngLatLike } from "mapbox-gl";
 import { MapboxMap } from 'vue-mapbox-ts';
 import { ref, reactive, onMounted } from 'vue';
 
 
 export interface FMapProps {
-  /**
-   * The map initial center coordinates
-   */
-  center: LngLatLike;
+  center: LngLatLike; // The map initial center coordinates
 }
 
 const props = defineProps<FMapProps>();
@@ -49,7 +46,7 @@ function applyTheme() {
   mapInstance.setStyle(`mapbox://styles/mapbox/${mapTheme.value}-v10`)
 }
 
-function fetchBikes() {
+async function fetchBikes() {
   bikesLoaded.value = false;
   return fetch(`${import.meta.env.VITE_API_URL}/bikes`, {
     method: 'get',

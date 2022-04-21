@@ -71,14 +71,6 @@ function getStatusMessage() {
 <style lang="scss">
     @import "@/styles/_variables.scss";
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
     .mapboxgl-popup-content {
         padding: 0;
     }
@@ -113,15 +105,15 @@ function getStatusMessage() {
     }
 
     .battery-full {
-      color: #2ecc71;
+      color: $validation;
     }
 
     .battery-medium {
-      color: #fdcb6e;
+      color: $warning;
     }
 
     .battery-low {
-      color: #ff7675;
+      color: $danger;
     }
 
     .popup-bike-icon {

@@ -1,23 +1,32 @@
 <template>
-    <button @click="$emit('openAddBikePopup')" class="add-bike-button">
-        <v-icon class="theme-icon" size="30">
-            mdi-plus-circle
+    <v-btn
+        @click="$emit('listenClick')"
+        color="success"
+        class="add-bike-button"
+    >
+        <v-icon class="add-bike-icon"
+        >
+        mdi-plus-circle
         </v-icon>
-    </button>
+        Add a new bike
+    </v-btn>
 </template>
 
 <style scoped lang="scss">
 
 .add-bike-button {
     position: absolute;
-    top: 35px;
-    right: 80px;
+    bottom: 35px;
+    right: 35px;
     z-index: 5;
-    color: var(--secondary);
     transition: transform .15s;
 
     &:hover {
         transform: scale(1.2);
     }
+}
+
+.add-bike-icon {
+    margin-right: 6px;
 }
 </style>

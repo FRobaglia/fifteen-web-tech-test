@@ -1,13 +1,13 @@
 <template>
     <div class="bike-popup">  
         <v-list>
-            <v-list-subheader>N<sup>o</sup> de série : {{ props.serial_number }}</v-list-subheader>
+            <v-list-subheader>Serial number : {{ props.serial_number }}</v-list-subheader>
 
                 <v-list-item v-if="!props.in_order">
                     <v-list-item-avatar>
                         <v-icon size="24" color="#dcdde1">mdi-close-octagon</v-icon>
                     </v-list-item-avatar>
-                    <v-list-item-title>Le vélo est hors-service.</v-list-item-title>
+                    <v-list-item-title>Out of service</v-list-item-title>
                 </v-list-item>
                 
                 <div v-else>
@@ -22,14 +22,19 @@
                         <v-list-item-avatar>
                             <v-icon size="24" :class="getBatteryStatus(props.battery_level)">{{ `mdi-battery${roundToNearest10(props.battery_level)}` }} </v-icon>
                         </v-list-item-avatar>
-                        <v-list-item-title>Le vélo est chargé à {{ props.battery_level }}%.</v-list-item-title>
+                        <v-list-item-title>{{ props.battery_level }}% battery</v-list-item-title>
                     </v-list-item>
                 </div>
         </v-list>
 
-        <button @click="$emit('editBike')" class="edit-bike-button">
-            {{ props.in_order ? "Rendre hors-service" : "Remettre en service" }}
-        </button>
+        <div class="bike-popup-buttons">
+            <button @click="$emit('editBike')" class=" edit-bike-button bike-popup-button">
+                {{ props.in_order ? "Put out of service" : "Put back into service" }}
+            </button>
+            <button @click="$emit('deleteBike')" class=" bike-popup-button">
+                Remove Bike
+            </button>
+        </div>
     </div>
 </template>
 
@@ -67,7 +72,7 @@ function roundToNearest10(x: number) {
 }
 
 function getStatusMessage() {
-    let statusMessages = ["Le vélo est libre d'accès.", "Le vélo est réservé.", "Le vélo est en cours d'utilisation."]
+    let statusMessages = ["Free", "Reserved", "In use"]
     return statusMessages[props.service_status - 1]
 }
 </script>
@@ -77,23 +82,29 @@ function getStatusMessage() {
 
     .mapboxgl-popup-content {
         padding: 0;
+        background: none;
     }
 
-    .mapboxgl-popup-tip {
-        display: none;
+    .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+        border-top-color: var(--white);
+        transform: translateY(-1px);
     }
 
     .bike-popup {
         color: var(--black);
         background: var(--white);
         font-size: 14px;
+        border-radius: 4px;
+        min-width: 215px;
 
         .v-list {
             background: var(--white);
+            border-radius: 4px;
         }
 
         .v-list-item {
             padding: 0;
+            margin-left: -5px;
         }
 
         .v-list-subheader {
@@ -135,13 +146,21 @@ function getStatusMessage() {
         }
     }
 
-    .edit-bike-button {
+    .bike-popup-buttons {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px 16px 16px;
+    }
+
+    .bike-popup-button {
         color: $link;
         text-decoration: underline;
         font-size: 12px;
-        padding: 0 0 16px 16px;
         display: inline;
-        text-align: right;
+    }
+
+    .edit-bike-button {
+        padding-right: 16px;
     }
 
 </style>

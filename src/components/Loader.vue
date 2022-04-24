@@ -29,4 +29,14 @@
 .logo-wheel {
     animation: rotate 10s infinite linear;
 }
+
+@media(max-width: 600px) {
+    .logo-text {
+        width: 170px;
+        margin-right: 20px;
+    }
+    .logo-wheel {
+        width: 60px;
+    }
+}
 </style>

@@ -1,10 +1,11 @@
 <template>
   <Loader v-if="!mapHasLoaded"></Loader>
-  <!-- <AddBikeButton @openAddBikePopup="popupIsActive = true"></AddBikeButton>
-  <AddBikePopup :class="{ active: popupIsActive }"></AddBikePopup> -->
+  <FlashMessage :class="{active: listenForClick || flashMessageActive}" :message="flashMessage"></FlashMessage>
+  <AddBikeButton @listenClick="listenClick"></AddBikeButton>
+  <AddBikePopup @closePopup="popupIsActive = false" :class="{ active: popupIsActive }" :newBikeLat="newBikeLat" :newBikeLng="newBikeLng" @addBike="addBike"></AddBikePopup>
   <HandleThemeButton @toggleTheme="handleTheme"></HandleThemeButton>
-  <MapboxMap @loaded="(map: any) => {handleLoad(map)}" :accessToken="accessToken" :mapStyle="`mapbox://styles/mapbox/${mapTheme}-v10`" :center="props.center" :zoom="9">
-    <BikeMarker @editBike="editBike" v-if="mapHasLoaded && bikesLoaded" v-for="bike in bikes.value" :key="bike.id" :id="bike.id" :serial_number="bike.serial_number" :coordinates="bike.coordinates" :in_order="bike.in_order" :service_status="bike.service_status" :battery_level="bike.battery_level">
+  <MapboxMap :class="{listening: listenForClick}" @click="handleClick" @loaded="(map: any) => {handleLoad(map)}" :accessToken="accessToken" :mapStyle="`mapbox://styles/mapbox/${mapTheme}-v10`" :center="props.center" :zoom="9">
+    <BikeMarker @editBike="editBike" @deleteBike="deleteBike" v-if="mapHasLoaded && bikesLoaded" v-for="bike in bikes.value" :key="bike.id" :id="bike.id" :serial_number="bike.serial_number" :coordinates="bike.coordinates" :in_order="bike.in_order" :service_status="bike.service_status" :battery_level="bike.battery_level">
     </BikeMarker>
   </MapboxMap>
   
@@ -14,8 +15,9 @@
 import BikeMarker from "@/components/BikeMarker.vue";
 import Loader from "@/components/Loader.vue";
 import HandleThemeButton from "@/components/HandleThemeButton.vue";
-// import AddBikeButton from '@/components/AddBikeButton.vue';
-// import AddBikePopup from '@/components/AddBikePopup.vue';
+import AddBikeButton from '@/components/AddBikeButton.vue';
+import AddBikePopup from '@/components/AddBikePopup.vue';
+import FlashMessage from '@/components/FlashMessage.vue';
 import useTheme from '@/composables/useTheme.js';
 import { LngLatLike } from "mapbox-gl";
 import { MapboxMap } from 'vue-mapbox-ts';
@@ -29,13 +31,19 @@ export interface FMapProps {
 const props = defineProps<FMapProps>();
 
 let mapHasLoaded = ref(false)
+const mapTheme = ref(localStorage.getItem("theme") || "light") 
+
 const bikes: Bike[] = reactive([])
 const bikesLoaded = ref(true)
-const error = ref(null)
-// let popupIsActive = ref(false)
+
+let popupIsActive = ref(false)
+let flashMessageActive = ref(false)
+let listenForClick = ref(false)
+let flashMessage = ref("")
+let newBikeLat = ref(0)
+let newBikeLng = ref(0)
 
 const { toggleTheme } = useTheme();
-const mapTheme = ref(localStorage.getItem("theme") || "light") 
 const accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN
 
 let mapInstance: any = reactive({})
@@ -47,6 +55,29 @@ interface Bike {
   in_order: boolean,
   service_status: number,
   battery_level: number
+}
+
+function newFlashMessage(message: string) {
+  flashMessage.value = message
+  flashMessageActive.value = true
+  setTimeout(() => {
+    flashMessageActive.value = false
+  }, 3000);
+}
+
+function listenClick() {
+  flashMessage.value = "Click on the map to choose the position of the bike."
+  listenForClick.value = true
+}
+
+function handleClick(e: any) {
+  if (!listenForClick.value) return
+
+  newBikeLat.value = e.lngLat.lat
+  newBikeLng.value = e.lngLat.lng
+  
+  popupIsActive.value = true
+  listenForClick.value = false
 }
 
 function handleLoad(map: any) {
@@ -83,14 +114,44 @@ function addBike(bike: Bike) {
       return res.json();
     })
     .then(data => {
-      bikes.value.push(bike)
+      bikes.value.push(bike) // update view
+      newFlashMessage(`Bike successfully added. (#${bike.serial_number})`)
     })
     .catch(err => {
-      error.value = err;
       if (err.json) {
         return err.json.then(json => {
-          error.value.message = json.message;
-          console.error(error.value.message)
+          console.error(json.message)
+        });
+      }
+    })
+}
+
+function deleteBike(id: string) {
+  fetch(`${import.meta.env.VITE_API_URL}/bikes/${id}`, {
+    method: 'delete',
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+    .then(res => {
+      if (!res.ok) {
+        // non-200 response code
+        const error = new Error(res.statusText);
+        console.error(error)
+        throw error;
+      }
+      return res.json();
+    })
+    .then(data => {
+      let bike = findBike(id)
+      const i = bikes.value.indexOf(bike)
+      bikes.value.splice(i, 1)
+      newFlashMessage(`Bike successfully deleted. (#${bike.serial_number})`)
+    })
+    .catch(err => {
+      if (err.json) {
+        return err.json.then(json => {
+          console.error(json.message)
         });
       }
     })
@@ -116,13 +177,12 @@ function editBike(id: string, in_order: boolean) {
     .then(data => {
       let bike = findBike(id)
       bike.in_order = !bike.in_order
+      newFlashMessage(`Bike successfully edited. (#${bike.serial_number})`)
     })
     .catch(err => {
-      error.value = err;
       if (err.json) {
         return err.json.then(json => {
-          error.value.message = json.message;
-          console.error(error.value.message)
+          console.error(json.message)
         });
       }
     })
@@ -165,3 +225,11 @@ onMounted(() => {
   fetchBikes()
 });
 </script>
+
+<style lang="scss">
+.mapbox-map.listening {
+  .mapboxgl-canvas-container { 
+    cursor: crosshair !important // Change cursor when listening for click to add a new bike
+  }
+}
+</style>

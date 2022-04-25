@@ -35,14 +35,18 @@ const props = defineProps<BikeProps>();
 @import "@/styles/_variables.scss";
 
 .bike-icon {
-  transition: .15s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 30px;
   height: 30px;
   border-radius: 100%;
-  box-shadow: 0 3px 3px rgba(0,0,0,0.4);
+  box-shadow: 0 5px 5px rgba(0,0,0,0.4);
+  transition: .1s ease-in-out;
+
+  &:hover {
+    transform: scale(1.15);
+  }
 
   &.free {
     background: $validation;
@@ -57,11 +61,8 @@ const props = defineProps<BikeProps>();
   }
 
   &.out-of-order {
-    background: $neutral;
-  }
-
-  &:hover {
-    transform: scale(1.2);
+    background: var(--primary);
+    color: var(--secondary);
   }
 }
 </style>

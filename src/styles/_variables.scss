@@ -1,16 +1,11 @@
-// Place SASS variable overrides here
-// $font-size-root: 18px;
-
 :root {
-    --white: #f5f6fa;
-    --black: #343332;
+    --white: #FFFAFA;
+    --black: #202020;
 
     --primary: var(--white);
     --secondary: var(--black);
 }
 
-$link: #3498db;
 $validation: #2ecc71;
 $warning: #fdcb6e;
 $danger: #ff7675;
-$neutral: #dcdde1;

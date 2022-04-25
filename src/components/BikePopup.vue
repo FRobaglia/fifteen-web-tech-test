@@ -5,9 +5,9 @@
 
                 <v-list-item v-if="!props.in_order">
                     <v-list-item-avatar>
-                        <v-icon size="24" color="#dcdde1">mdi-close-octagon</v-icon>
+                        <v-icon size="24" color="var(--secondary)">mdi-close-octagon</v-icon>
                     </v-list-item-avatar>
-                    <v-list-item-title>Out of service</v-list-item-title>
+                    <v-list-item-title>Bike is out of service</v-list-item-title>
                 </v-list-item>
                 
                 <div v-else>
@@ -15,25 +15,37 @@
                         <v-list-item-avatar>
                             <v-icon size="24" :class="`popup-bike-icon ${['free', 'booked', 'in-use'][props.service_status - 1]}`">mdi-bicycle</v-icon>
                         </v-list-item-avatar>
-                        <v-list-item-title>{{ getStatusMessage() }}</v-list-item-title>
+                        <v-list-item-title>Bike is {{ getStatusMessage() }}</v-list-item-title>
                     </v-list-item>
 
                     <v-list-item>
                         <v-list-item-avatar>
                             <v-icon size="24" :class="getBatteryStatus(props.battery_level)">{{ `mdi-battery${roundToNearest10(props.battery_level)}` }} </v-icon>
                         </v-list-item-avatar>
-                        <v-list-item-title>{{ props.battery_level }}% battery</v-list-item-title>
+                        <v-list-item-title>Bike has {{ props.battery_level }}% battery</v-list-item-title>
                     </v-list-item>
                 </div>
         </v-list>
 
-        <div class="bike-popup-buttons">
-            <button @click="$emit('editBike')" class=" edit-bike-button bike-popup-button">
-                {{ props.in_order ? "Put out of service" : "Put back into service" }}
-            </button>
-            <button @click="$emit('deleteBike')" class=" bike-popup-button">
+        <div class="popup-buttons">
+            <v-btn
+             @click="$emit('editBike')" class="edit-bike-button " 
+                size="x-small"
+                flat
+                variant="outlined"
+                color="var(--secondary)"
+            >
+                {{ props.in_order ? "Put out of service" : "Put back in service" }}
+            </v-btn>
+            <v-btn
+             @click="$emit('deleteBike')" class="" 
+                size="x-small"
+                flat
+                variant="outlined"
+                color="#ff7675"
+            >
                 Remove Bike
-            </button>
+            </v-btn>
         </div>
     </div>
 </template>
@@ -65,6 +77,7 @@ function getBatteryStatus(x: number) {
 }
 
 function roundToNearest10(x: number) {
+  // Rounds battery level to the nearest ten to get a relevant battery icon using mdi
   const rounded: number =  Math.ceil(x / 10) * 10;
 
   if (rounded === 100) return "" // If the battery is full, mdi icon name is mdi-battery
@@ -72,7 +85,7 @@ function roundToNearest10(x: number) {
 }
 
 function getStatusMessage() {
-    let statusMessages = ["Free", "Reserved", "In use"]
+    let statusMessages = ["free", "reserved", "in use"]
     return statusMessages[props.service_status - 1]
 }
 </script>
@@ -83,22 +96,36 @@ function getStatusMessage() {
     .mapboxgl-popup-content {
         padding: 0;
         background: none;
+        box-shadow: 0px 0px 20px 3px rgba(0,0,0,0.3)
     }
-
-    .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
-        border-top-color: var(--white);
-        transform: translateY(-1px);
+        
+    // Fix mapboxgl popup arrow color for all possibles cases
+    .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+        border-bottom-color: var(--primary);
+    }
+    .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+    .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+        border-top-color: var(--primary);
+    }
+    .mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+        border-right-color: var(--primary);
+    }
+    .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+        border-left-color: var(--primary);
     }
 
     .bike-popup {
         color: var(--black);
-        background: var(--white);
+        background: var(--primary);
         font-size: 14px;
         border-radius: 4px;
         min-width: 215px;
 
         .v-list {
-            background: var(--white);
+            background: var(--primary);
             border-radius: 4px;
         }
 
@@ -108,11 +135,12 @@ function getStatusMessage() {
         }
 
         .v-list-subheader {
-            font-size: 12px;
+            color: var(--secondary);
+            font-size: 13px;
         }
 
         .v-list-item-title {
-            color: var(--black);
+            color: var(--secondary);
             font-size: 14px;
             white-space: normal;
             text-overflow: clip;
@@ -132,35 +160,27 @@ function getStatusMessage() {
     }
 
     .popup-bike-icon {
-
         &.free {
-        color: $validation;
+            color: $validation;
         }
 
         &.booked {
-        color: $warning;
+            color: $warning;
         }
 
         &.in-use {
-        color: $danger;
+            color: $danger;
         }
     }
 
-    .bike-popup-buttons {
-        display: flex;
-        justify-content: space-between;
+    .popup-buttons {
         padding: 0 16px 16px 16px;
-    }
-
-    .bike-popup-button {
-        color: $link;
-        text-decoration: underline;
-        font-size: 12px;
-        display: inline;
+        display: flex;
     }
 
     .edit-bike-button {
-        padding-right: 16px;
+        color: var(--primary);
+        margin-right: 16px;
     }
 
 </style>

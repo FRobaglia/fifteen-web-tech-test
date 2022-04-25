@@ -1,5 +1,6 @@
 import { ref } from 'vue';
 
+// Dark theme composable
 export default function useTheme() {
     const currentTheme = ref(localStorage.getItem('theme') || 'light');
     currentTheme.value === 'light' ? setLightTheme() : setDarkTheme();

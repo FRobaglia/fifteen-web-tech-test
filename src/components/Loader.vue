@@ -8,13 +8,10 @@
 <style scoped lang="scss">
 
 .loader {
-    transition: .3s  ease-in-out;
     position: absolute;
     z-index: 999;
     background-color: var(--primary);
-    top: 0; left: 0;
-    opacity: 1;
-    width: 100vw; height: 100vh;
+    top: 0; left: 0; right: 0; bottom: 0;
     overflow: hidden;
 
     display: flex;

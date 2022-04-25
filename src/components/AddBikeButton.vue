@@ -6,7 +6,7 @@
     >
         <v-icon class="add-bike-icon"
         >
-        mdi-plus-circle
+            mdi-plus-circle
         </v-icon>
         Add a new bike
     </v-btn>
@@ -19,10 +19,10 @@
     bottom: 35px;
     right: 35px;
     z-index: 5;
-    transition: transform .15s;
+    transition: transform .2s;
 
     &:hover {
-        transform: scale(1.2);
+        transform: scale(1.05);
     }
 }
 

@@ -18,7 +18,6 @@
     "vue": "^3.2.31",
     "vue-mapbox-ts": "^0.8.0",
     "vuetify": "^3.0.0-beta.0",
-    "vuex": "^4.0.2",
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {

@@ -5,8 +5,6 @@
 </template>
 
 <script setup lang="ts">
-
-
 export interface flashMessageProps {
   message: string;
 }

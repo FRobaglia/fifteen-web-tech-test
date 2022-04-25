@@ -1,6 +1,6 @@
 <template>
     <button @click="$emit('toggleTheme')" class="theme-toggle">
-        <v-icon class="theme-icon" size="30">
+        <v-icon size="30">
             mdi-brightness-6
         </v-icon>
     </button>
@@ -12,13 +12,13 @@
     position: absolute;
     top: 35px;
     right: 35px;
-    z-index: 5;
+    z-index: 20;
     color: var(--secondary);
     transform: rotate(0);
-    transition: .15s ease;
+    transition: .1s ease;
 
     &:hover {
-        transform: scale(1.2);
+        transform: scale(1.15);
     }
 }
 </style>
